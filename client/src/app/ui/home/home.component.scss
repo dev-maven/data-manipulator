@@ -1,0 +1,92 @@
+.view {
+    background: url("/assets/images/background.jpeg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    margin-top: -40px;
+}
+
+.view:before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    background: rgba(21, 7, 75, 0.5);
+  }
+
+  .home-content {
+      position: relative;
+      z-index: 3;
+      color: #fff;
+  }
+
+  .header-container {
+    padding: 20px;
+  }
+
+  .tile{
+    text-align: right;
+    height: 8rem;
+    padding: 15px !important;
+    border-radius: 15px;
+    cursor: pointer;
+    .mat-icon{
+        position: absolute;
+        left: 4px;
+        top: 50%;
+        line-height: 0;
+        font-size: 54px;
+        opacity: 0.6;
+    }
+    h2{
+        font-weight: 500;
+        margin-top: 20px;
+    }
+    p{
+        text-transform: uppercase;
+    }
+}
+
+.gradient-indigo{
+  background: #303f9f !important;
+  background: -webkit-linear-gradient(50deg,#2ec6ff,#303f9f) !important;
+  background: -o-linear-gradient(50deg,#2ec6ff,#303f9f) !important;
+  background: linear-gradient(50deg,#2ec6ff,#303f9f) !important;
+  color: #fff !important;
+}
+
+.gradient-red{
+  background: #D50000 !important;
+  background: -webkit-linear-gradient(50deg,#FF9E80, #D50000) !important;
+  background: -o-linear-gradient(50deg,#FF9E80, #D50000) !important;
+  background: linear-gradient(50deg,#FF9E80, #D50000) !important;
+  color: #fff !important;
+}
+
+
+
+
+
+  .horizontal-cut-text {
+  $red: #e01616;
+
+    font-weight: 900;
+    font-family: 'Catamaran', sans-serif;
+    text-transform: uppercase;
+    $stripe-size: 3%;
+    background:
+    -webkit-linear-gradient(270deg, $red, $red 50%,      transparent 50%),
+    -webkit-repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent $stripe-size,
+      white $stripe-size,
+      white $stripe-size * 2,
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+      text-shadow: 6px 6px rgba(black, 0.4),
+}

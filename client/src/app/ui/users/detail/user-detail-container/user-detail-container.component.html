@@ -1,0 +1,20 @@
+
+<div class="back-container" [routerLink]="['/users']">
+  <mat-icon color="primary">first_page</mat-icon>
+  <div class="back-btn">Back</div>
+</div>
+
+<h4 class="module-title">User Detail</h4>
+
+<div *ngIf="!(userLoading$ | async) 
+&& !(platformLoading$ | async); else loader">
+  <app-user-detail-view [user]="user$ | async"
+  [platforms]="platforms$ | async"></app-user-detail-view>
+  </div>
+
+  <ng-template #loader>
+    <app-redux-loader></app-redux-loader>
+</ng-template>
+
+
+

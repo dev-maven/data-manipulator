@@ -1,0 +1,54 @@
+mat-header-cell,
+mat-cell {
+  display: flex;
+  padding: 0 10px !important;
+  font-size: 0.9rem;
+}
+
+.no-show {
+    opacity: 0;
+}
+
+.margin-up {
+margin-top: -7rem;
+}
+
+.table-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .shared {
+    color: #0b8359;
+    font-weight: 900;
+    display: block;
+    margin: auto;
+    font-size: 26px;
+    text-shadow: 0.4px 0 #0b8359;
+    cursor: pointer;
+
+  }
+
+  .not-shared {
+    color: #F44336;
+    font-weight: 900;
+    display: block;
+    margin: auto;
+    font-size: 26px;
+    text-shadow: 0.4px 0 #f44336;
+    cursor: pointer;
+
+  }
+
+  .not-available {
+      color: #cc9393;
+      font-weight: 900;
+      display: block;
+      margin: auto;
+    font-size: 26px;
+    text-shadow: 0.4px 0 #cc9393;
+    cursor: pointer;
+
+
+  }

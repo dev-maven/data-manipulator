@@ -1,0 +1,200 @@
+<div *ngIf="user">
+  <div class="card-container">
+    <div fxHide fxShow.gt-xs>
+     <div class="row give-space">
+       <div class="col-sm-12">
+        <h6 class="info-category">Personal Information</h6>
+        <mat-divider></mat-divider>
+       </div>
+       <div class="row give-space">
+         <div class="col-sm-3">
+           <div class="circular-img">
+          <img *ngIf="user.gender === 'Male'" src="assets/images/male.png" />
+          <img *ngIf="user.gender === 'Female'" src="assets/images/female.png" />
+         </div>
+        </div>
+         <div class="col-sm-9">
+           <div class="row give-space">
+            <div class="col-sm-4">
+             <span class="detail-header">First Name</span>
+           </div>  
+           <div class="col-sm-4">
+             <span class="detail-header">Last Name</span>
+           </div>     
+           <div class="col-sm-4">
+             <span class="detail-header">Gender</span>
+           </div>   
+          <div class="col-sm-4">
+           <span class="detail-content ">{{user.first_name}}</span>
+         </div>
+         <div class="col-sm-4">
+          <span class="detail-content ">{{user.last_name}}</span>
+        </div>   
+        <div class="col-sm-4">
+          <span class="detail-content ">{{user.gender}}</span>
+        </div>   
+           </div>
+         </div>
+       </div>
+
+     </div>
+
+    <div class="row give-space">
+      <div class="col-sm-12">
+        <h6 class="info-category">Account Information</h6>
+        <mat-divider></mat-divider>
+
+       </div>
+       <div class="col-sm-3">
+        <span class="detail-header">ID</span>
+      </div>
+      <div class="col-sm-3">
+        <span class="detail-header">Email</span>
+      </div>
+     <div class="col-sm-3">
+       <span class="detail-header">IP Address</span>
+     </div> 
+     <div class="col-sm-3">
+      <span class="detail-header">Username</span>
+    </div> 
+    <div class="col-sm-3">
+      <span class="detail-content ">{{user.id}}</span>
+    </div>
+    <div class="col-sm-3">
+      <span class="detail-content ">{{user.email}}</span>
+    </div>
+   <div class="col-sm-3">
+    <span class="detail-content ">{{user.ip_address}}</span>
+  </div> 
+  <div class="col-sm-3">
+   <span class="detail-content ">{{user.username}}</span>
+ </div>            
+    </div>
+
+   </div>
+
+   <div fxHide fxShow.lt-sm>
+     <div class="row give-space">
+      <div class="col-sm-12">
+        <h6 class="info-category">Personal Information</h6>
+        <mat-divider></mat-divider>
+
+       </div>
+     <div class="col-sm-12">
+      <span class="detail-header">ID:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{user.id}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">First Name:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{user.first_name}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">Last Name:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{user.last_name}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">Gender:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{user.gender}}</span>
+     </div>
+
+     <div class="col-sm-12">
+      <h6 class="info-category">Account Information</h6>
+      <mat-divider></mat-divider>
+
+     </div>
+
+     <div class="col-sm-12">
+      <span class="detail-header">Email:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{user.email}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">IP Address:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{user.ip_address}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">Username:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{user.username}}</span>
+     </div>
+   </div>
+  </div>
+
+  </div>
+
+  <div class="row">
+  <div class="col-sm-12">
+    <h6 class="info-category related">Shared On</h6>
+    <mat-divider></mat-divider>
+   </div>
+  </div>
+
+  <div class="card-group" fxHide fxShow.gt-md fxShow.md>
+    <ng-container *ngFor="let platform of platforms.platforms">
+      <mat-card class="sub-card {{platform.name}}" 
+      *ngIf="user.profile_shared?.shared_on_platform_1 && platform.platform_id == 1
+      || user.profile_shared?.shared_on_platform_2 && platform.platform_id == 2
+      || user.profile_shared?.shared_on_platform_3 && platform.platform_id == 3">
+        <mat-card-content class="card-content">
+          <div class="row">
+            <div class="col-sm-12">
+          <p class="card-label text-center fw-500">Name: <span class="fw-700">{{platform.name}}</span></p>
+            </div>
+            <div class="col-sm-12">
+              <p class="card-label text-center fw-500">Last Shared: <span class="fw-700">{{platform.last_shared | date: 'long' }}</span></p>
+            </div>
+            <div class="col-sm-6">
+          <p class="card-label fw-500">ID: <span class="fw-700">{{platform.platform_id}}</span></p>
+
+            </div>
+            <div class="col-sm-6">
+          <p fxLayoutAlign="end" class="card-label fw-500">Display Order: <span class="fw-700">{{platform.display_order}}</span></p>
+              
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+  </div>
+
+  <div class="row give-space" fxHide fxShow.lt-md>
+    <div class="col-sm-12" *ngFor="let platform of platforms.platforms">
+      <mat-card class="sub-card small-card {{platform.name}}" 
+      *ngIf="user.profile_shared?.shared_on_platform_1 && platform.platform_id == 1
+      || user.profile_shared?.shared_on_platform_2 && platform.platform_id == 2
+      || user.profile_shared?.shared_on_platform_3 && platform.platform_id == 3">
+        <mat-card-content class="card-content">
+          <div class="row">
+            <div class="col-sm-12">
+          <p class="card-label text-center fw-500">Name: <span class="fw-700">{{platform.name}}</span></p>
+            </div>
+            <div class="col-sm-12">
+              <p class="card-label text-center fw-500">Last Shared: <span class="fw-700">{{platform.last_shared | date: 'long' }}</span></p>
+            </div>
+            <div class="col-sm-6">
+          <p class="card-label fw-500">ID: <span class="fw-700">{{platform.platform_id}}</span></p>
+
+            </div>
+            <div class="col-sm-6">
+          <p fxLayoutAlign="end" class="card-label fw-500">Display Order: <span class="fw-700">{{platform.display_order}}</span></p>
+              
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

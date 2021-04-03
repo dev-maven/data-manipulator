@@ -1,0 +1,73 @@
+<div *ngIf="platform">
+  <div class="card-container">
+    <div fxHide fxShow.gt-xs>
+    <div class="row give-space">
+      <div class="col-sm-12">
+        <h6 class="info-category">Platform Information</h6>
+        <mat-divider></mat-divider>
+
+       </div>
+       <div class="col-sm-3">
+        <span class="detail-header">ID</span>
+      </div>
+      <div class="col-sm-3">
+        <span class="detail-header">Name</span>
+      </div>
+     <div class="col-sm-3">
+       <span class="detail-header">Last Shared</span>
+     </div> 
+     <div class="col-sm-3">
+      <span class="detail-header">Display Order</span>
+    </div> 
+    <div class="col-sm-3">
+      <span class="detail-content ">{{platform.platform_id}}</span>
+    </div>
+    <div class="col-sm-3">
+      <span class="detail-content ">{{platform.name}}</span>
+    </div>
+   <div class="col-sm-3">
+    <span class="detail-content ">{{platform.last_shared | date: 'medium'}}</span>
+  </div> 
+  <div class="col-sm-3">
+   <span class="detail-content ">{{platform.display_order}}</span>
+ </div>            
+    </div>
+
+   </div>
+
+   <div fxHide fxShow.lt-sm>
+     <div class="row give-space">
+      <div class="col-sm-12">
+        <h6 class="info-category">Platform Information</h6>
+        <mat-divider></mat-divider>
+
+       </div>
+     <div class="col-sm-12">
+      <span class="detail-header">ID:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{platform.platform_id}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">Name:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{platform.name}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">Last Shared:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{platform.last_shared}}</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-header">Display Order:</span>
+     </div>
+     <div class="col-sm-12">
+      <span class="detail-content">{{platform.display_order}}</span>
+     </div>
+   </div>
+  </div>
+
+  </div>
+</div>

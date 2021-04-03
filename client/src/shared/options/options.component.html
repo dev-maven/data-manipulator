@@ -1,0 +1,20 @@
+<div class="options transition" [ngClass]="{'show': showOptions}">
+    <button mat-raised-button (click)="showOptions = !showOptions" class="options-icon mat-elevation-z0 settings-button">
+        <mat-icon>palette</mat-icon>
+    </button>
+    <mat-card fxLayout="column" fxLayoutAlign="space-between center"> 
+        <span class="skin-icon green" (click)="changeTheme('#689f38')"></span> 
+        <span class="skin-icon blue" (click)="changeTheme('#673ab7')"></span>
+        <span class="skin-icon red" (click)="changeTheme('#d32f2f')"></span> 
+        <span class="skin-icon pink" (click)="changeTheme('#c2185b')"></span> 
+        <span class="skin-icon purple" (click)="changeTheme('#94630a')"></span>
+        <span class="skin-icon grey" (click)="changeTheme('#455a64')"></span> 
+        <mat-divider></mat-divider>
+        <button matTooltip="Dark mode" mat-raised-button *ngIf="!darkmode" (click)="toggleMode()" class="mat-elevation-z0 mode-button btn-dark-mode">
+            <mat-icon>dark_mode</mat-icon>
+        </button>
+        <button matTooltip="Light mode" mat-raised-button *ngIf="darkmode" (click)="toggleMode()" class="mat-elevation-z0 mode-button btn-light-mode">
+            <mat-icon>light_mode</mat-icon>
+        </button>
+    </mat-card>
+</div>

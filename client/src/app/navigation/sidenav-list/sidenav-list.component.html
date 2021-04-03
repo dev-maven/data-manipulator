@@ -1,0 +1,18 @@
+<mat-nav-list class="side-bar">
+  <a mat-list-item routerLink="/" routerLinkActive="active-route"
+  [routerLinkActiveOptions]="{exact:true}"
+  >
+    <mat-icon>home</mat-icon>
+    <span class="nav-caption">Home</span>
+  </a>
+
+  <a mat-list-item routerLink="/users" routerLinkActive="active-route">
+    <mat-icon>people</mat-icon>
+    <span class="nav-caption">Users</span>
+  </a>
+
+  <a mat-list-item routerLink="/platforms" routerLinkActive="active-route">
+    <mat-icon>public</mat-icon>
+    <span class="nav-caption">Platforms</span>
+  </a>
+</mat-nav-list>

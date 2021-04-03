@@ -1,0 +1,10 @@
+<h4 class="module-title">User Management</h4>
+<div *ngIf="!(userLoading$ | async); else loader">
+<app-user-list-view [userList]="users$ | async"></app-user-list-view>
+</div>
+
+
+
+<ng-template #loader>
+    <app-redux-loader></app-redux-loader>
+</ng-template>

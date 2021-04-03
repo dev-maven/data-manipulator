@@ -1,0 +1,18 @@
+
+<div class="back-container" [routerLink]="['/platforms']">
+  <mat-icon color="primary">first_page</mat-icon>
+  <div class="back-btn">Back</div>
+</div>
+
+<h4 class="module-title">Platform Detail</h4>
+
+<div *ngIf="!(platformLoading$ | async); else loader">
+  <app-platform-detail-view
+  [platform]="platform$ | async"></app-platform-detail-view>  
+    </div>
+  
+    <ng-template #loader>
+      <app-redux-loader></app-redux-loader>
+  </ng-template>
+
+
