@@ -15,6 +15,10 @@ html, body {
     color: #274b94;
   }
 
+  .back-container:focus {
+    outline: none;
+  }
+
   .give-space {
 
     [class*="col-"] {

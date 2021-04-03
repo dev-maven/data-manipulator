@@ -12,7 +12,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { appEffects, appReducers, PlatformService, UserService } from './store';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { PagesComponent } from './ui/pages/pages.component';
+import { PagesComponent } from './pages/pages.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxFitTextModule } from 'ngx-fit-text';
 import {MaterialCssVarsModule} from 'angular-material-css-vars';
