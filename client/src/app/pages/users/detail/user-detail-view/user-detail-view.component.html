@@ -142,13 +142,10 @@
     <mat-divider></mat-divider>
    </div>
   </div>
-
+  <div *ngIf="user.platforms_details?.length > 0; else noPlatform">
   <div class="card-group" fxHide fxShow.gt-md fxShow.md>
-    <ng-container *ngFor="let platform of platforms.platforms">
-      <mat-card class="sub-card {{platform.name}}" 
-      *ngIf="user.profile_shared?.shared_on_platform_1 && platform.platform_id == 1
-      || user.profile_shared?.shared_on_platform_2 && platform.platform_id == 2
-      || user.profile_shared?.shared_on_platform_3 && platform.platform_id == 3">
+    <ng-container *ngFor="let platform of user.platforms_details">
+      <mat-card class="sub-card {{platform.name}}">
         <mat-card-content class="card-content">
           <div class="row">
             <div class="col-sm-12">
@@ -173,11 +170,8 @@
   </div>
 
   <div class="row give-space" fxHide fxShow.lt-md>
-    <div class="col-sm-12" *ngFor="let platform of platforms.platforms">
-      <mat-card class="sub-card small-card {{platform.name}}" 
-      *ngIf="user.profile_shared?.shared_on_platform_1 && platform.platform_id == 1
-      || user.profile_shared?.shared_on_platform_2 && platform.platform_id == 2
-      || user.profile_shared?.shared_on_platform_3 && platform.platform_id == 3">
+    <div class="col-sm-12" *ngFor="let platform of user.platforms_details">
+      <mat-card class="sub-card small-card {{platform.name}}">
         <mat-card-content class="card-content">
           <div class="row">
             <div class="col-sm-12">
@@ -199,4 +193,11 @@
       </mat-card>
     </div>
   </div>
+  </div>
+
+  <ng-template #noPlatform>
+    <h5 class="text-center placeholder">Not shared on any platform</h5>
+  </ng-template>
+
+
 </div>

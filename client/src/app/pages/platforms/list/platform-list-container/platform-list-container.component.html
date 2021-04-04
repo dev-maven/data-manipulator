@@ -1,7 +1,7 @@
 <h4 class="module-title">Platform Management</h4>
 
 <div *ngIf="!(platformLoading$ | async); else loader">
-<app-platform-list-view [platformList]="platforms$ | async"></app-platform-list-view>
+<app-platform-list-view [platformList]="(platforms$ | async)"></app-platform-list-view>
 
   </div>
 
