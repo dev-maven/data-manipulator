@@ -9,11 +9,12 @@
   </div>
   <div fxLayoutAlign="end center">
     <button class="margin-up ml-2" mat-raised-button color="primary"
-    (click)="exportData()"
+    (click)="exporter.exportTable('csv', {fileName: platformTable ? 'platform-data': 'user-data', Props: {Author: 'Maven'}})"
     >Export as CSV</button>
   </div>
   
-  <mat-table [dataSource]="dataSource" @blub matSort class="my-table">
+  <mat-table matTableExporter [dataSource]="dataSource" @blub matSort class="my-table" #exporter="matTableExporter"
+   [hiddenColumns]="platformTable ? [4]: [10]">
   <div *ngFor="let tableData of objectKeys(columnHeader); let i = index">
     <ng-container
       [matColumnDef]="tableData"
@@ -39,9 +40,13 @@
     <ng-container *ngFor="let platform of dynamicPlatformObj" matColumnDef="{{platform}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on {{getPlatformName(platform)}}</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared[platform] === true">done</mat-icon>
-        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared[platform] === false">clear</mat-icon>
-        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared[platform] === null">block</mat-icon>
+        <fa-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared[platform] === true" [icon]="faCheck"></fa-icon>
+        <fa-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared[platform] === false" [icon]="faTimes"></fa-icon>
+        <fa-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared[platform] === null" [icon]="faBan"></fa-icon>
+        <span class="cdk-visually-hidden">
+          {{ element.profile_shared[platform] === null ? 'Not Applicable' 
+          : element.profile_shared[platform] === true ? 'YES' : 'NO' }}
+        </span>
       </mat-cell>
     </ng-container>
   

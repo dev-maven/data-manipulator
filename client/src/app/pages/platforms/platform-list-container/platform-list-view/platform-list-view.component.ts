@@ -28,18 +28,4 @@ columns = {
   view(id: any): void {
     this.router.navigate([`platforms/${id}/detail`]);
   }
-
-  export(): void {
-    if (this.platformList) {
-      const onlyNameAndSymbolArr: Partial<any>[] = this.platformList.map(x => ({
-        ID: x.platform_id,
-        Name: x.name,
-        Last_Shared: x.last_shared,
-        Display_Order: x.display_order,
-      }));
-      TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'platform-data');
-    }
-
-  }
-
 }

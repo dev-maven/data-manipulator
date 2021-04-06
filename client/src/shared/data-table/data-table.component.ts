@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Platform } from 'src/app/store';
 import { fadeOut, blub } from '../animations';
+import { faBan, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-data-table',
@@ -18,7 +19,6 @@ export class DataTableComponent implements OnInit, OnChanges {
   @Input() platformTable = false;
   @Input() platforms: Platform[] | null = [];
   @Output() view = new EventEmitter();
-  @Output() export = new EventEmitter();
   dataSource = new MatTableDataSource<any>();
   objectKeys = Object.keys;
   dynamicPlatformObj: string[] = [];
@@ -31,6 +31,9 @@ export class DataTableComponent implements OnInit, OnChanges {
   ) {
     this.dataSource.paginator = paginator;
   }
+  faCheck = faCheck;
+  faTimes = faTimes;
+  faBan = faBan;
 
   constructor() { }
 
@@ -73,9 +76,5 @@ public getPlatformName(property: string): string {
     return '';
   }
 }
-
-exportData(): void {
-  this.export.emit();
-  }
 
 }

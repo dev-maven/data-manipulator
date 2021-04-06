@@ -26,6 +26,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReduxLoaderComponent } from './redux-loader/redux-loader.component';
 import { OptionsComponent } from './options/options.component';
 import { DataTableComponent } from './data-table/data-table.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { DataTableComponent } from './data-table/data-table.component';
     MatSnackBarModule,
     MatTooltipModule,
     FlexLayoutModule,
+    MatTableExporterModule,
+    FontAwesomeModule
 
 
   ],
@@ -71,6 +75,7 @@ import { DataTableComponent } from './data-table/data-table.component';
     MatTabsModule,
     MatCardModule,
     MatSelectModule,
+    MatTableExporterModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     MatTableModule,
@@ -80,7 +85,9 @@ import { DataTableComponent } from './data-table/data-table.component';
     FlexLayoutModule,
   ReduxLoaderComponent,
   OptionsComponent,
-  DataTableComponent
+  DataTableComponent,
+  FontAwesomeModule
+
 
 
 
