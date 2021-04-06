@@ -9,15 +9,17 @@ import { Platform, ProfileShared, User } from 'src/app/store';
 
 })
 export class UserDetailViewComponent implements OnInit, OnChanges {
-@Input() user: User = {} as User;
-@Input() platforms: Platform[] = [];
+@Input() user: User | null = {} as User;
+@Input() platforms: Platform[] | null = [];
   constructor() { }
 
   ngOnInit(): void {
   }
 
   ngOnChanges(): void {
+    if (this.user) {
     this.user = this.manipulateData(this.user);
+    }
   }
 
   manipulateData(user: User): User {

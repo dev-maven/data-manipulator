@@ -11,7 +11,7 @@ import { TableUtil } from 'src/shared/table.util';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlatformListViewComponent implements OnInit {
-@Input() platformList: Platform[] = [];
+@Input() platformList: Platform[] | null = [];
 columns = {
   platform_id : 'ID',
   name: 'Name',
@@ -30,13 +30,16 @@ columns = {
   }
 
   export(): void {
-    const onlyNameAndSymbolArr: Partial<any>[] = this.platformList.map(x => ({
-      ID: x.platform_id,
-      Name: x.name,
-      Last_Shared: x.last_shared,
-      Display_Order: x.display_order,
-    }));
-    TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'platform-data');
+    if (this.platformList) {
+      const onlyNameAndSymbolArr: Partial<any>[] = this.platformList.map(x => ({
+        ID: x.platform_id,
+        Name: x.name,
+        Last_Shared: x.last_shared,
+        Display_Order: x.display_order,
+      }));
+      TableUtil.exportArrayToExcel(onlyNameAndSymbolArr, 'platform-data');
+    }
+
   }
 
 }

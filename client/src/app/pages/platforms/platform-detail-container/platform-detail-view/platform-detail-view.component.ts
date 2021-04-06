@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Platform } from 'src/app/store';
 
 @Component({
   selector: 'app-platform-detail-view',
@@ -8,7 +9,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 
 })
 export class PlatformDetailViewComponent implements OnInit {
-@Input() platform: any;
+@Input() platform: Platform | null = {} as Platform;
   constructor() { }
 
   ngOnInit(): void {
