@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from 'src/app/store';
-import { TableUtil } from 'src/shared/table.util';
 
 
 @Component({

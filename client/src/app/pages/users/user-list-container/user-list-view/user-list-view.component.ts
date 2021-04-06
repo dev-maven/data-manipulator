@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform, User } from 'src/app/store';
-import { TableUtil } from 'src/shared/table.util';
 
 @Component({
   selector: 'app-user-list-view',
