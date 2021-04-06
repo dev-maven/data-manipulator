@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnI
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Platform } from 'src/app/store';
 import { fadeOut, blub } from '../animations';
 
 @Component({
@@ -15,10 +16,12 @@ export class DataTableComponent implements OnInit, OnChanges {
   @Input() tableData: any;
   @Input() columnHeader: any;
   @Input() platformTable = false;
+  @Input() platforms: Platform[] | null = [];
   @Output() view = new EventEmitter();
   @Output() export = new EventEmitter();
   dataSource = new MatTableDataSource<any>();
   objectKeys = Object.keys;
+  dynamicPlatformObj: string[] = [];
   @ViewChild(MatSort, { static: false }) set content(sort: MatSort) {
     this.dataSource.sort = sort;
   }
@@ -37,6 +40,15 @@ export class DataTableComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     if (this.dataSource.data.length < 1) {
     this.dataSource.data = this.tableData;
+    if (!this.platformTable) {
+      for (const property in this.tableData[0].profile_shared) {
+        if (property) {
+          this.dynamicPlatformObj.push(property);
+          this.columnHeader = {...this.columnHeader, [property]: null};
+        }
+      }
+      this.columnHeader = {...this.columnHeader, action: null};
+    }
     }
   }
 
@@ -49,6 +61,16 @@ viewData(element: any): void {
     this.view.emit(element.platform_id);
   } else {
   this.view.emit(element.id);
+  }
+}
+
+public getPlatformName(property: string): string {
+  const index = +(property.replace(/\D/g, ''));
+  const currentPlatform = this.platforms?.find(x => (x.platform_id === index) ?? {} as Platform);
+  if (currentPlatform) {
+    return currentPlatform.name;
+  } else {
+    return '';
   }
 }
 

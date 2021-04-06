@@ -171,7 +171,7 @@
 
   <div class="row give-space" fxHide fxShow.lt-md>
     <div class="col-sm-12" *ngFor="let platform of user.platforms_details">
-      <mat-card class="sub-card small-card {{platform.name}}">
+      <mat-card class="sub-card small-card p-{{platform.platform_id}}">
         <mat-card-content class="card-content">
           <div class="row">
             <div class="col-sm-12">

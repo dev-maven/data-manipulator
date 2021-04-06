@@ -30,7 +30,7 @@ export class AppInterceptor implements HttpInterceptor {
             console.log(`Request for ${req.urlWithParams} failed after ${elapsed} ms.`);
            // debugger;
             this.store.dispatch(decrementLoader());
-            this.snackBar.open(error.message, '×', { panelClass: ['warn'], verticalPosition: 'top', duration: 3000 });
+            this.snackBar.open(error.message, '×', { panelClass: ['error-snackbar'], verticalPosition: 'top', duration: 3000 });
             return throwError(error);
           })
         );

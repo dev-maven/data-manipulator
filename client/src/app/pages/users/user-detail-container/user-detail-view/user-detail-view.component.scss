@@ -38,7 +38,7 @@
   }
   
 
-  .Dazzlesphere{
+  .p-1, .p-4, .p-7, .p-10 {
     color: #fff !important;
     background: #0a0358 !important;
     background: -webkit-linear-gradient(50deg,#307c80,#0a0358) !important;
@@ -47,7 +47,7 @@
     color: #fff !important;
 }
 
-.Yabox{
+.p-2, .p-5, .p-8, .p-11 {
   background: #c52d34 !important;
   background: -webkit-linear-gradient(50deg,#bd9008,#c52d34) !important;
   background: -o-linear-gradient(50deg,#bd9008,#c52d34) !important;
@@ -55,7 +55,7 @@
   color: #fff !important;
 }
 
-.Kwideo{
+.p-3, .p-6 .p-9 .p-12 {
   background: #6c07fb !important;
   background: -webkit-linear-gradient(50deg,#795614,#6c07fb) !important;
   background: -o-linear-gradient(50deg,#795614,#6c07fb) !important;

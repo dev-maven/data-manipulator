@@ -18,6 +18,10 @@ html, body {
     outline: none;
   }
 
+  .error-snackbar {
+    background: #F44336;
+  }
+
   .give-space {
 
     [class*="col-"] {
@@ -83,6 +87,7 @@ html, body {
     }
     .table-button {
       border-color: #8f9fbd !important;
+      color: #5ac3e4 !important;
     }
   }
 

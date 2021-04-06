@@ -8,12 +8,14 @@ import {
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { getPlatforms, getUser, getUsers, selectUsers, User } from 'src/app/store';
+import { getPlatforms, getUser, getUsers, Platform, selectPlatforms, selectUsers, User } from 'src/app/store';
 
 
 @Injectable()
 export class UsersResolver implements Resolve<boolean> {
   users$?: Observable<User[]>;
+  platforms$?: Observable<Platform[]>;
+
 
   constructor(private store: Store<any>, router: Router) {
   }
@@ -28,11 +30,21 @@ export class UsersResolver implements Resolve<boolean> {
       this.store.dispatch(getUsers());
         }
       });
-
+      this.platforms$ = this.store.pipe(select(selectPlatforms));
+      this.platforms$.pipe(take(2)).subscribe(platforms => {
+        if (!platforms) {
+      this.store.dispatch(getPlatforms());
+        }
+      });
       break;
       case ':id/detail':
         this.store.dispatch(getUser({id: +(id as string)}));
+        this.platforms$ = this.store.pipe(select(selectPlatforms));
+        this.platforms$.pipe(take(2)).subscribe(platforms => {
+          if (!platforms) {
         this.store.dispatch(getPlatforms());
+          }
+        });
         break;
     }
     return true;

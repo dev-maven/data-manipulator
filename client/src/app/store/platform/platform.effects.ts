@@ -24,7 +24,7 @@ export class PlatformEffects {
       getPlatforms$ = createEffect(() =>
       this.actions$.pipe(
             ofType(fromPlatformActions.getPlatforms),
-            exhaustMap(action =>
+            exhaustMap(() =>
               this.platformService
                 .getPlatforms()
                 .pipe(map(platformSummary => fromPlatformActions.getPlatformsComplete({platformSummary})),

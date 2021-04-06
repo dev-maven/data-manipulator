@@ -13,7 +13,7 @@ import { getPlatforms, getPlatform, Platform, selectPlatforms } from 'src/app/st
 
 @Injectable()
 export class PlatformsResolver implements Resolve<boolean> {
-  platforms$?: Observable<any>;
+  platforms$?: Observable<Platform[]>;
 
   constructor(private store: Store<any>, router: Router) {
   }
@@ -24,7 +24,7 @@ export class PlatformsResolver implements Resolve<boolean> {
       case '':
         this.platforms$ = this.store.pipe(select(selectPlatforms));
         this.platforms$.pipe(take(2)).subscribe(platforms => {
-          if (!platforms?.platforms) {
+          if (!platforms) {
         this.store.dispatch(getPlatforms());
           }
         });

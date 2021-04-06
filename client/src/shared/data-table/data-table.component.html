@@ -20,9 +20,7 @@
       *ngIf="
         tableData !== 'action' 
         && tableData !== 'last_shared'
-        && tableData !== 'platform1'
-        && tableData !== 'platform2' 
-        && tableData !== 'platform3'">
+        && !tableData.includes('shared_on_platform')">
       <mat-header-cell *matHeaderCellDef mat-sort-header>{{
         columnHeader[tableData]
       }}</mat-header-cell>
@@ -37,28 +35,13 @@
     <mat-header-cell fxHide.lt-sm *matHeaderCellDef mat-sort-header>Last Shared</mat-header-cell>
     <mat-cell fxHide.lt-sm *matCellDef="let element"><span class="table-overflow">{{ element.last_shared | date: 'medium' }}</span></mat-cell>
   </ng-container>
-    <ng-container matColumnDef="platform1">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on Dazzlesphere</mat-header-cell>
+
+    <ng-container *ngFor="let platform of dynamicPlatformObj" matColumnDef="{{platform}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on {{getPlatformName(platform)}}</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared.shared_on_platform_1 === true">done</mat-icon>
-        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared.shared_on_platform_1 === false">clear</mat-icon>
-        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared.shared_on_platform_1 === null">block</mat-icon>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="platform2">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on Yabox</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared.shared_on_platform_2 === true">done</mat-icon>
-        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared.shared_on_platform_2 === false">clear</mat-icon>
-        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared.shared_on_platform_2 === null">block</mat-icon>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="platform3">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on Kwideo</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared.shared_on_platform_3 === true">done</mat-icon>
-        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared.shared_on_platform_3 === false">clear</mat-icon>
-        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared.shared_on_platform_3 === null">block</mat-icon>
+        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared[platform] === true">done</mat-icon>
+        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared[platform] === false">clear</mat-icon>
+        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared[platform] === null">block</mat-icon>
       </mat-cell>
     </ng-container>
   

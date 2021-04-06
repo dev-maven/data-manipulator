@@ -19,7 +19,7 @@ const platformReducerInternal = createReducer(
 
   on(platformActions.getPlatforms, (state) => {
     return {
-      ...state
+      ...state,
     };
   }),
 

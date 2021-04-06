@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/store';
+import { Platform, User } from 'src/app/store';
 import { TableUtil } from 'src/shared/table.util';
 
 @Component({
@@ -11,6 +11,8 @@ import { TableUtil } from 'src/shared/table.util';
 })
 export class UserListViewComponent implements OnInit {
 @Input() userList: User[] | null = [];
+@Input() platformList: Platform[] | null = [];
+
  columns = {
   id: 'ID',
   first_name: 'First Name',
@@ -19,10 +21,6 @@ export class UserListViewComponent implements OnInit {
   gender: 'Gender',
   ip_address: 'IP Address',
   username: 'Username',
-  platform1: 'Platform1',
-  platform2: 'Platform2',
-  platform3: 'Platform3',
-  action: 'Action'
 };
 
   constructor(private router: Router) { }
