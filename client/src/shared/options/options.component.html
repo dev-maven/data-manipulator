@@ -1,4 +1,4 @@
-<div class="options transition" [ngClass]="{'show': showOptions}">
+<div class="options transition" [ngClass]="{'show': showOptions}" (mouseleave)="showOptions = !showOptions">
     <button mat-raised-button (click)="showOptions = !showOptions" class="options-icon mat-elevation-z0 settings-button">
         <mat-icon>palette</mat-icon>
     </button>

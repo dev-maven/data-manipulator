@@ -1,10 +1,6 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/store';
-import { fadeOut, blub } from 'src/shared/animations';
 import { TableUtil } from 'src/shared/table.util';
 
 @Component({
@@ -12,42 +8,26 @@ import { TableUtil } from 'src/shared/table.util';
   templateUrl: './user-list-view.component.html',
   styleUrls: ['./user-list-view.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeOut, blub],
-
 })
-export class UserListViewComponent implements OnInit, OnChanges {
-@Input() userList: any;
-displayedColumns = ['id', 'first_name', 'last_name', 'email',
-'gender', 'ip_address', 'username',
-'platform1', 'platform2', 'platform3', 'action'];
-dataSource = new MatTableDataSource<User>();
-
-@ViewChild(MatSort, { static: false }) set content(sort: MatSort) {
-  this.dataSource.sort = sort;
-}
-
-@ViewChild(MatPaginator, { static: false }) set page(
-  paginator: MatPaginator
-) {
-  this.dataSource.paginator = paginator;
-}
+export class UserListViewComponent implements OnInit {
+@Input() userList: User[] = [];
+ columns = {
+  id: 'ID',
+  first_name: 'First Name',
+  last_name: 'Last Name',
+  email: 'Email',
+  gender: 'Gender',
+  ip_address: 'IP Address',
+  username: 'Username',
+  platform1: 'Platform1',
+  platform2: 'Platform2',
+  platform3: 'Platform3',
+  action: 'Action'
+};
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-
-  }
-
-  ngOnChanges(): void {
-    if (this.userList && this.dataSource.data.length < 1) {
-    this.dataSource.data = this.userList;
-
-    }
-
-  }
-
-  doFilter(filterValue: string): void {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   view(id: any): void {
@@ -55,7 +35,7 @@ dataSource = new MatTableDataSource<User>();
   }
 
   export(): void {
-    const onlyNameAndSymbolArr: Partial<any>[] = this.dataSource.data.map(x => ({
+    const onlyNameAndSymbolArr: Partial<any>[] = this.userList.map(x => ({
       ID: x.id,
       First_Name: x.first_name,
       Last_Name: x.last_name,

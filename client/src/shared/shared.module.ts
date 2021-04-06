@@ -25,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReduxLoaderComponent } from './redux-loader/redux-loader.component';
 import { OptionsComponent } from './options/options.component';
+import { DataTableComponent } from './data-table/data-table.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { OptionsComponent } from './options/options.component';
   ],
   declarations: [
   ReduxLoaderComponent,
-  OptionsComponent
+  OptionsComponent,
+  DataTableComponent
    ],
   exports: [
     MatButtonModule,
@@ -77,7 +79,9 @@ import { OptionsComponent } from './options/options.component';
     MatSnackBarModule,
     FlexLayoutModule,
   ReduxLoaderComponent,
-  OptionsComponent
+  OptionsComponent,
+  DataTableComponent
+
 
 
   ]

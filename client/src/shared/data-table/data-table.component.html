@@ -1,0 +1,84 @@
+
+<mat-card class="table-card">
+
+  <div fxLayoutAlign="center center">
+    <mat-form-field fxFlex="40%" appearance="outline">
+    <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Search Table">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  </div>
+  <div fxLayoutAlign="end center">
+    <button class="margin-up ml-2" mat-raised-button color="primary"
+    (click)="exportData()"
+    >Export as CSV</button>
+  </div>
+  
+  <mat-table [dataSource]="dataSource" @blub matSort class="my-table">
+  <div *ngFor="let tableData of objectKeys(columnHeader); let i = index">
+    <ng-container
+      [matColumnDef]="tableData"
+      *ngIf="
+        tableData !== 'action' 
+        && tableData !== 'last_shared'
+        && tableData !== 'platform1'
+        && tableData !== 'platform2' 
+        && tableData !== 'platform3'">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+        columnHeader[tableData]
+      }}</mat-header-cell>
+      <mat-cell *matCellDef="let element"
+        ><span
+          class="table-overflow {{ element[tableData] }}"
+          >{{ element[tableData] }}</span
+        ></mat-cell>
+    </ng-container>
+  </div>
+  <ng-container matColumnDef="last_shared">
+    <mat-header-cell fxHide.lt-sm *matHeaderCellDef mat-sort-header>Last Shared</mat-header-cell>
+    <mat-cell fxHide.lt-sm *matCellDef="let element"><span class="table-overflow">{{ element.last_shared | date: 'medium' }}</span></mat-cell>
+  </ng-container>
+    <ng-container matColumnDef="platform1">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on Dazzlesphere</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared.shared_on_platform_1 === true">done</mat-icon>
+        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared.shared_on_platform_1 === false">clear</mat-icon>
+        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared.shared_on_platform_1 === null">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="platform2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on Yabox</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared.shared_on_platform_2 === true">done</mat-icon>
+        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared.shared_on_platform_2 === false">clear</mat-icon>
+        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared.shared_on_platform_2 === null">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="platform3">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Shared on Kwideo</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-icon matTooltip="Shared" class="shared" *ngIf="element.profile_shared.shared_on_platform_3 === true">done</mat-icon>
+        <mat-icon matTooltip="Not Shared" class="not-shared" *ngIf="element.profile_shared.shared_on_platform_3 === false">clear</mat-icon>
+        <mat-icon matTooltip="Not Applicable" class="not-available" *ngIf="element.profile_shared.shared_on_platform_3 === null">block</mat-icon>
+      </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button  (click)="viewData(element)" mat-stroked-button
+          class="table-button">
+          View
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="objectKeys(columnHeader); sticky: true"></mat-header-row>
+    <mat-row @fadeOut *matRowDef="let row; columns: objectKeys(columnHeader)"></mat-row>
+  
+  </mat-table>
+  
+  <mat-paginator #paginator 
+  [pageSize]="20" 
+  [pageSizeOptions]="[20, 50, 100]">
+  </mat-paginator>
+  </mat-card>

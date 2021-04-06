@@ -16,6 +16,7 @@ import { PagesComponent } from './pages/pages.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxFitTextModule } from 'ngx-fit-text';
 import {MaterialCssVarsModule} from 'angular-material-css-vars';
+import { AppInterceptor } from 'src/shared/app-interceptor';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {MaterialCssVarsModule} from 'angular-material-css-vars';
   providers: [
     PlatformService,
     UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

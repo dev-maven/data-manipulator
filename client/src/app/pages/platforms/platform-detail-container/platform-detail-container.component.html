@@ -6,7 +6,7 @@
 
 <h4 class="module-title">Platform Detail</h4>
 
-<div *ngIf="!(platformLoading$ | async); else loader">
+<div *ngIf="!(appLoading$ | async); else loader">
   <app-platform-detail-view
   [platform]="platform$ | async"></app-platform-detail-view>  
     </div>

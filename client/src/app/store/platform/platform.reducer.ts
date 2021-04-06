@@ -1,19 +1,17 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import * as platformActions from './platform.actions';
-import { Platform } from './platform.model';
+import { Platform, PlatformSummary } from './platform.model';
 
 export const platformFeatureName = 'platform';
 
 export interface PlatformState {
   platform: Platform;
-  platforms: Platform[];
-  platformLoading: boolean;
+  platformSummary: PlatformSummary;
 }
 
 export const initialPlatformState: PlatformState = {
   platform: {} as Platform,
-  platforms: [],
-  platformLoading: false
+  platformSummary: {} as PlatformSummary,
 };
 
 const platformReducerInternal = createReducer(
@@ -21,35 +19,31 @@ const platformReducerInternal = createReducer(
 
   on(platformActions.getPlatforms, (state) => {
     return {
-      ...state,
-      platformLoading: true
+      ...state
     };
   }),
 
   on(platformActions.getPlatform, (state) => {
     return {
-      ...state,
-      platformLoading: true
+      ...state
     };
   }),
 
-  on(platformActions.getPlatformsComplete, (state, { platforms }) => {
+  on(platformActions.getPlatformsComplete, (state, { platformSummary }) => {
     return {
       ...state,
-      platforms,
-      platformLoading: false
+      platformSummary
     };
   }),
 
 on(platformActions.getPlatformComplete, (state, { platform }) => {
   return {
     ...state,
-    platform,
-    platformLoading: false
+    platform
   };
 })
 );
 
-export function platformReducer(state: PlatformState | undefined, action: Action) {
+export function platformReducer(state: PlatformState | undefined, action: Action): any {
   return platformReducerInternal(state, action);
 }

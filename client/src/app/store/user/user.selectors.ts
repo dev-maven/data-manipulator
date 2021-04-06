@@ -13,8 +13,3 @@ export const selectUser = createSelector(
   selectUserState,
   userState => userState.user
 );
-
-export const selectUserLoading = createSelector(
-  selectUserState,
-  userState => userState.userLoading
-);

@@ -142,7 +142,7 @@
     <mat-divider></mat-divider>
    </div>
   </div>
-  <div *ngIf="user.platforms_details?.length > 0; else noPlatform">
+  <div *ngIf="user.platforms_details && user.platforms_details.length > 0; else noPlatform">
   <div class="card-group" fxHide fxShow.gt-md fxShow.md>
     <ng-container *ngFor="let platform of user.platforms_details">
       <mat-card class="sub-card {{platform.name}}">

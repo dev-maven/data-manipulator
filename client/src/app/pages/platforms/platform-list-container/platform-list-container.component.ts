@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectPlatforms, Platform, selectPlatformLoading } from 'src/app/store';
+import { selectPlatforms, Platform, selectAppLoading } from 'src/app/store';
 
 @Component({
   selector: 'app-platform-list-container',
@@ -10,14 +10,14 @@ import { selectPlatforms, Platform, selectPlatformLoading } from 'src/app/store'
 })
 export class PlatformListContainerComponent implements OnInit {
   platforms$?: Observable<Platform[]>;
-platformLoading$?: Observable<boolean>;
+  appLoading$?: Observable<boolean>;
 
 
   constructor(protected store: Store<any>) { }
 
   ngOnInit(): void {
     this.platforms$ = this.store.pipe(select(selectPlatforms));
-    this.platformLoading$ = this.store.pipe(select(selectPlatformLoading));
+    this.appLoading$ = this.store.pipe(select(selectAppLoading));
 
   }
 

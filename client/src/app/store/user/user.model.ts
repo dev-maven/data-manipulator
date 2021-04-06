@@ -1,3 +1,5 @@
+import { Platform } from '../platform/platform.model';
+
 export interface User {
 id: number;
 first_name: string;
@@ -7,6 +9,7 @@ gender: string;
 ip_address: string;
 username: string;
 profile_shared: ProfileShared;
+platforms_details: Platform[];
 }
 
 export interface ProfileShared {

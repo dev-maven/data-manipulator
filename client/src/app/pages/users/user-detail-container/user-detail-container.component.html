@@ -6,8 +6,7 @@
 
 <h4 class="module-title">User Detail</h4>
 
-<div *ngIf="!(userLoading$ | async) 
-&& !(platformLoading$ | async); else loader">
+<div *ngIf="!(appLoading$ | async); else loader">
   <app-user-detail-view [user]="user$ | async"
   [platforms]="platforms$ | async"></app-user-detail-view>
   </div>
