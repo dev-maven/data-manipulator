@@ -1,6 +1,7 @@
 <h4 class="module-title">User Management</h4>
 <div *ngIf="!(appLoading$ | async); else loader">
-<app-user-list-view [userList]="users$ | async"></app-user-list-view>
+<app-user-list-view [userList]="users$ | async"
+[platformList]="platforms$ | async"></app-user-list-view>
 </div>
 
 
