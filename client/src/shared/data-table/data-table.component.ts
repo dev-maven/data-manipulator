@@ -21,6 +21,7 @@ export class DataTableComponent implements OnInit, OnChanges {
   @Output() view = new EventEmitter();
   dataSource = new MatTableDataSource<any>();
   objectKeys = Object.keys;
+  object = Object;
   dynamicPlatformObj: string[] = [];
   @ViewChild(MatSort, { static: false }) set content(sort: MatSort) {
     this.dataSource.sort = sort;

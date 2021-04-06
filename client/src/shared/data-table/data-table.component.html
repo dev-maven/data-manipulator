@@ -14,7 +14,7 @@
   </div>
   
   <mat-table matTableExporter [dataSource]="dataSource" @blub matSort class="my-table" #exporter="matTableExporter"
-   [hiddenColumns]="platformTable ? [4]: [10]">
+   [hiddenColumns]="[objectKeys(columnHeader).indexOf('action')]">
   <div *ngFor="let tableData of objectKeys(columnHeader); let i = index">
     <ng-container
       [matColumnDef]="tableData"
