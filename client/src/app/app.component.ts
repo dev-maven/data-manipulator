@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MaterialCssVarsService} from 'angular-material-css-vars';
-import { ThemeService } from 'src/shared/theme.service';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
   selector: 'app-root',

@@ -4,28 +4,21 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-import { SharedModule } from 'src/shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { appEffects, appReducers, PlatformService, UserService } from './store';
+import { HeaderComponent } from './core/components/navigation/header/header.component';
+import { SidenavListComponent } from './core/components/navigation/sidenav-list/sidenav-list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { PagesComponent } from './pages/pages.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxFitTextModule } from 'ngx-fit-text';
-import {MaterialCssVarsModule} from 'angular-material-css-vars';
-import { AppInterceptor } from 'src/shared/app-interceptor';
-
+import { MaterialCssVarsModule } from 'angular-material-css-vars';
+import { AppInterceptor } from 'src/app/core/interceptors/app-interceptor';
+import { appReducers, appEffects, appServices } from './core/store';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidenavListComponent,
-    PagesComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, SidenavListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -47,10 +40,9 @@ import { AppInterceptor } from 'src/shared/app-interceptor';
     }),
   ],
   providers: [
-    PlatformService,
-    UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
+    appServices,
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

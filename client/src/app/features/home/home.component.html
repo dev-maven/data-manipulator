@@ -1,0 +1,33 @@
+<div id="intro" class="view">
+  <table id="wrapper" class="home-content">
+    <tr>
+      <td>
+        <h1 class="fw-550">Welcome to</h1>
+        <div class="header-container">
+          <div class="horizontal-cut-text" [ngxFitText] [ngxFitTextMax]="75">
+            Data Manipulator
+          </div>
+        </div>
+      </td>
+    </tr>
+    <td>
+      <div class="row give-space">
+        <div class="col-sm-6">
+          <mat-card routerLink="/users" class="gradient-indigo tile p-1">
+            <mat-icon>people</mat-icon>
+            <h2>Manage Users</h2>
+          </mat-card>
+        </div>
+        <div class="col-sm-6">
+          <mat-card routerLink="/platforms" class="gradient-red tile p-1">
+            <mat-icon>public</mat-icon>
+            <h2>Manage Platforms</h2>
+          </mat-card>
+        </div>
+      </div>
+    </td>
+    <tr></tr>
+  </table>
+  <!-- <div class="intro-div">
+  </div> -->
+</div>

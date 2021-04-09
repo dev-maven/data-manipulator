@@ -1,38 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PagesComponent } from './pages/pages.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: PagesComponent, children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('./pages/home/home.module').then(a => a.HomeModule),
-        data: { preload: false },
-        runGuardsAndResolvers: 'always',
-      },
-      {
-        path: 'users',
-        loadChildren: () =>
-          import('./pages/users/users.module').then(a => a.UsersModule),
-        data: { preload: false },
-        runGuardsAndResolvers: 'always',
-      },
-      {
-        path: 'platforms',
-        loadChildren: () =>
-          import('./pages/platforms/platforms.module').then(a => a.PlatformsModule),
-        data: { preload: false },
-        runGuardsAndResolvers: 'always',
-      },
-    ]
+    loadChildren: () =>
+      import('./features/home/home.module').then((a) => a.HomeModule),
+    data: { preload: false },
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./features/user/user.module').then((a) => a.UsersModule),
+    data: { preload: false },
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'platforms',
+    loadChildren: () =>
+      import('./features/platform/platform.module').then(
+        (a) => a.PlatformsModule
+      ),
+    data: { preload: false },
+    runGuardsAndResolvers: 'always',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
